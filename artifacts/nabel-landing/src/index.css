@@ -273,6 +273,26 @@ html {
   scroll-behavior: smooth;
 }
 
+/* RTL-aware utility */
+[dir="rtl"] .animate-scroll-logos {
+  animation-direction: reverse;
+}
+
+/* RTL: flip directional icons and arrows inline */
+[dir="rtl"] .group-hover\:translate-x-1:hover {
+  --tw-translate-x: -0.25rem;
+}
+
+/* RTL: use start/end for positioning instead of left/right */
+[dir="rtl"] .-start-6 {
+  right: -1.5rem;
+  left: auto;
+}
+[dir="rtl"] .-end-6 {
+  left: -1.5rem;
+  right: auto;
+}
+
 /* Purple gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #5B3B8A, #8E6BC4);

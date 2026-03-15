@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-
-const links = [
-  { label: "Home", href: "#hero" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Clients", href: "#clients" },
-  { label: "Contact", href: "#contact" },
-];
+import { Menu, X, Globe } from "lucide-react";
+import { useLang } from "../context/LanguageContext";
 
 export default function Navbar() {
+  const { t, toggle, lang } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { label: t("nav.home"), href: "#hero" },
+    { label: t("nav.services"), href: "#services" },
+    { label: t("nav.projects"), href: "#projects" },
+    { label: t("nav.gallery"), href: "#gallery" },
+    { label: t("nav.clients"), href: "#clients" },
+    { label: t("nav.contact"), href: "#contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -36,16 +38,16 @@ export default function Navbar() {
           </div>
           <div>
             <div className={`font-bold text-lg leading-tight transition-colors ${scrolled ? "text-[#5B3B8A]" : "text-white"}`}>
-              NABEL
+              {t("nav.brand")}
             </div>
             <div className={`text-xs leading-tight transition-colors ${scrolled ? "text-gray-500" : "text-purple-200"}`}>
-              Industrial Windows
+              {t("nav.brandSub")}
             </div>
           </div>
         </a>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {links.map((link) => (
             <a
               key={link.href}
@@ -58,21 +60,49 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8E6BC4] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
+
+          {/* Lang toggle */}
+          <button
+            onClick={toggle}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm font-semibold transition-all duration-300 hover:scale-105 ${
+              scrolled
+                ? "border-[#5B3B8A]/30 text-[#5B3B8A] hover:bg-purple-50"
+                : "border-white/30 text-white hover:bg-white/10"
+            }`}
+            title={lang === "en" ? "Switch to Arabic" : "Switch to English"}
+          >
+            <Globe size={15} />
+            <span>{lang === "en" ? "عربي" : "EN"}</span>
+          </button>
+
           <a
             href="#contact"
             className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#5B3B8A] to-[#8E6BC4] text-white text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
-            Get a Quote
+            {t("nav.quote")}
           </a>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setOpen(!open)}
-          className={`md:hidden p-2 rounded-lg transition-colors ${scrolled ? "text-gray-700" : "text-white"}`}
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile right side */}
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            onClick={toggle}
+            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition-all ${
+              scrolled
+                ? "border-[#5B3B8A]/30 text-[#5B3B8A]"
+                : "border-white/30 text-white"
+            }`}
+          >
+            <Globe size={13} />
+            {lang === "en" ? "عربي" : "EN"}
+          </button>
+          <button
+            onClick={() => setOpen(!open)}
+            className={`p-2 rounded-lg transition-colors ${scrolled ? "text-gray-700" : "text-white"}`}
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -94,7 +124,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#5B3B8A] to-[#8E6BC4] text-white text-center font-semibold"
             >
-              Get a Quote
+              {t("nav.quote")}
             </a>
           </div>
         </div>

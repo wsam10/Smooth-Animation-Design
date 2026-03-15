@@ -1,23 +1,21 @@
 import { ArrowRight, Phone } from "lucide-react";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { useLang } from "../context/LanguageContext";
 
 export default function CTA() {
+  const { t } = useLang();
   const { ref } = useIntersectionObserver();
 
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Animated gradient background */}
       <div
         className="absolute inset-0 animate-gradient"
         style={{
           background: "linear-gradient(135deg, #3D1F7A, #5B3B8A, #7B4FA8, #8E6BC4, #5B3B8A, #3D1F7A)",
         }}
       />
-      {/* Floating orbs */}
       <div className="absolute top-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-float delay-400" />
-
-      {/* Grid pattern overlay */}
       <div
         className="absolute inset-0 opacity-5"
         style={{
@@ -27,26 +25,22 @@ export default function CTA() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center" ref={ref}>
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-purple-200 text-sm font-medium mb-8 reveal">
-          Ready to Start?
+          {t("cta.badge")}
         </div>
-
         <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 reveal">
-          Start Your Next Project
+          {t("cta.h2a")}
           <br />
-          <span className="text-purple-200">With Us</span>
+          <span className="text-purple-200">{t("cta.h2b")}</span>
         </h2>
-
         <p className="text-lg md:text-xl text-purple-100 mb-12 max-w-2xl mx-auto leading-relaxed reveal">
-          Get professional solutions for windows, doors, and glass facades.
-          Our team is ready to bring your vision to life.
+          {t("cta.desc")}
         </p>
-
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 reveal">
           <a
             href="#contact"
             className="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-[#5B3B8A] font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
-            Request a Quote
+            {t("cta.quote")}
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </a>
           <a
@@ -54,7 +48,7 @@ export default function CTA() {
             className="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg hover:bg-white/20 hover:scale-105 transition-all duration-300"
           >
             <Phone size={20} />
-            Call Us Now
+            {t("cta.call")}
           </a>
         </div>
       </div>

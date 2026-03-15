@@ -1,17 +1,19 @@
 import { MapPin } from "lucide-react";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { useLang } from "../context/LanguageContext";
 
 const cities = [
-  { name: "Riyadh", count: 18, emoji: "🏙️" },
-  { name: "Al-Kharj", count: 8, emoji: "🏘️" },
-  { name: "Jeddah", count: 7, emoji: "🌊" },
-  { name: "Hail", count: 5, emoji: "⛰️" },
-  { name: "Al-Ahsa", count: 4, emoji: "🌴" },
-  { name: "Qassim", count: 5, emoji: "🏜️" },
-  { name: "Dammam", count: 6, emoji: "🏗️" },
+  { nameEn: "Riyadh",  nameAr: "الرياض",  count: 18, emoji: "🏙️" },
+  { nameEn: "Al-Kharj", nameAr: "الخرج",   count: 8,  emoji: "🏘️" },
+  { nameEn: "Jeddah",  nameAr: "جدة",      count: 7,  emoji: "🌊" },
+  { nameEn: "Hail",    nameAr: "حائل",     count: 5,  emoji: "⛰️" },
+  { nameEn: "Al-Ahsa", nameAr: "الأحساء",  count: 4,  emoji: "🌴" },
+  { nameEn: "Qassim",  nameAr: "القصيم",   count: 5,  emoji: "🏜️" },
+  { nameEn: "Dammam",  nameAr: "الدمام",   count: 6,  emoji: "🏗️" },
 ];
 
 export default function Cities() {
+  const { t, lang } = useLang();
   const { ref } = useIntersectionObserver();
 
   return (
@@ -19,20 +21,18 @@ export default function Cities() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 reveal" ref={ref}>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 border border-purple-200 text-[#5B3B8A] text-sm font-medium mb-4">
-            Coverage
+            {t("cities.badge")}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Projects Across <span className="gradient-text">Saudi Arabia</span>
+            {t("cities.h2a")} <span className="gradient-text">{t("cities.h2b")}</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            A growing presence in major cities and regions of the Kingdom
-          </p>
+          <p className="text-gray-500 text-lg max-w-xl mx-auto">{t("cities.desc")}</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 stagger-children">
           {cities.map((city, i) => (
             <div
-              key={city.name}
+              key={city.nameEn}
               className="reveal group card-hover glow-border bg-white rounded-2xl p-6 text-center border border-gray-100 shadow-sm cursor-default"
               style={{ transitionDelay: `${i * 0.07}s` }}
             >
@@ -40,9 +40,11 @@ export default function Cities() {
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#5B3B8A] to-[#8E6BC4] flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
                 <MapPin size={14} className="text-white" />
               </div>
-              <div className="font-bold text-gray-900 text-sm mb-1">{city.name}</div>
+              <div className="font-bold text-gray-900 text-sm mb-1">
+                {lang === "ar" ? city.nameAr : city.nameEn}
+              </div>
               <div className="text-2xl font-bold text-[#5B3B8A]">{city.count}</div>
-              <div className="text-xs text-gray-400 mt-0.5">Projects</div>
+              <div className="text-xs text-gray-400 mt-0.5">{t("cities.projects")}</div>
             </div>
           ))}
         </div>

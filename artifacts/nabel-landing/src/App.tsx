@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { LanguageProvider } from "./context/LanguageContext";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
@@ -12,27 +13,28 @@ import CTA from "./components/CTA";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-function App() {
-  // Global intersection observer for reveal animations
+function LandingPage() {
   useEffect(() => {
-    const revealEls = document.querySelectorAll(
-      ".reveal, .reveal-left, .reveal-right"
-    );
+    const observe = () => {
+      const revealEls = document.querySelectorAll(
+        ".reveal, .reveal-left, .reveal-right"
+      );
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      revealEls.forEach((el) => observer.observe(el));
+      return () => observer.disconnect();
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    revealEls.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
+    const cleanup = observe();
+    return cleanup;
   }, []);
 
   return (
@@ -50,6 +52,14 @@ function App() {
       <Contact />
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <LandingPage />
+    </LanguageProvider>
   );
 }
 

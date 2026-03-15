@@ -1,24 +1,27 @@
 import { Phone, MapPin, Mail, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
-
-const serviceLinks = [
-  "UPVC Windows",
-  "UPVC Doors",
-  "Glass Facades",
-  "Aluminum Systems",
-  "Cladding",
-  "Structural Glass",
-];
-
-const quickLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Clients", href: "#clients" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLang } from "../context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLang();
+
+  const serviceLinks = [
+    t("services.upvcWindows"),
+    t("services.upvcDoors"),
+    t("services.glassFacades"),
+    t("services.aluminum"),
+    t("services.cladding"),
+    t("services.structural"),
+  ];
+
+  const quickLinks = [
+    { label: t("nav.home"),     href: "#hero" },
+    { label: t("nav.services"), href: "#services" },
+    { label: t("nav.projects"), href: "#projects" },
+    { label: t("nav.gallery"),  href: "#gallery" },
+    { label: t("nav.clients"),  href: "#clients" },
+    { label: t("nav.contact"),  href: "#contact" },
+  ];
+
   return (
     <footer className="bg-gradient-to-br from-[#1E1040] via-[#2D1B55] to-[#1E1040] text-white">
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -30,15 +33,11 @@ export default function Footer() {
                 <span className="text-white font-bold text-xl">N</span>
               </div>
               <div>
-                <div className="font-bold text-xl text-white">NABEL</div>
-                <div className="text-purple-300 text-xs">Industrial Windows Factory</div>
+                <div className="font-bold text-xl text-white">{t("nav.brand")}</div>
+                <div className="text-purple-300 text-xs">{t("footer.brandSub")}</div>
               </div>
             </div>
-            <p className="text-purple-200 text-sm leading-relaxed mb-6">
-              Leading provider of UPVC windows, glass facades, and aluminum systems
-              for residential, commercial, and government projects across Saudi Arabia.
-            </p>
-            {/* Social */}
+            <p className="text-purple-200 text-sm leading-relaxed mb-6">{t("footer.desc")}</p>
             <div className="flex items-center gap-3">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
                 <a
@@ -54,7 +53,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-lg mb-6 text-white">Quick Links</h4>
+            <h4 className="font-bold text-lg mb-6 text-white">{t("footer.quickLinks")}</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -72,7 +71,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-bold text-lg mb-6 text-white">Our Services</h4>
+            <h4 className="font-bold text-lg mb-6 text-white">{t("footer.services")}</h4>
             <ul className="space-y-3">
               {serviceLinks.map((service) => (
                 <li key={service}>
@@ -90,7 +89,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold text-lg mb-6 text-white">Contact Info</h4>
+            <h4 className="font-bold text-lg mb-6 text-white">{t("footer.contact")}</h4>
             <div className="space-y-4">
               <a
                 href="tel:+966506393399"
@@ -100,46 +99,39 @@ export default function Footer() {
                   <Phone size={16} />
                 </div>
                 <div>
-                  <div className="text-xs text-purple-400 mb-0.5">Phone</div>
+                  <div className="text-xs text-purple-400 mb-0.5">{t("contact.phone")}</div>
                   <div className="text-sm font-medium">+966 506393399</div>
                 </div>
               </a>
-
               <div className="flex items-start gap-3 text-purple-200">
                 <div className="w-9 h-9 rounded-lg bg-[#5B3B8A]/50 flex items-center justify-center flex-shrink-0">
                   <MapPin size={16} />
                 </div>
                 <div>
-                  <div className="text-xs text-purple-400 mb-0.5">Address</div>
+                  <div className="text-xs text-purple-400 mb-0.5">{t("contact.address")}</div>
                   <div className="text-sm">
-                    Riyadh – Al Fahd Industrial Area
+                    {t("contact.addressVal")}
                     <br />
-                    Harun Al Rashid Road
+                    {t("contact.addressSub")}
                   </div>
                 </div>
               </div>
-
               <div className="flex items-start gap-3 text-purple-200">
                 <div className="w-9 h-9 rounded-lg bg-[#5B3B8A]/50 flex items-center justify-center flex-shrink-0">
                   <Mail size={16} />
                 </div>
                 <div>
                   <div className="text-xs text-purple-400 mb-0.5">Email</div>
-                  <div className="text-sm">info@nabel-windows.sa</div>
+                  <div className="text-sm">{t("footer.email")}</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-purple-300 text-sm">
-            © 2024 NABEL Industrial Windows Factory. All rights reserved.
-          </p>
-          <p className="text-purple-400 text-xs">
-            Saudi Arabia · Riyadh · Al Fahd Industrial Area
-          </p>
+          <p className="text-purple-300 text-sm">{t("footer.copyright")}</p>
+          <p className="text-purple-400 text-xs">{t("footer.location")}</p>
         </div>
       </div>
     </footer>

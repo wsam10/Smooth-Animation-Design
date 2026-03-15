@@ -1,6 +1,7 @@
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { useLang } from "../context/LanguageContext";
 
-const clients = [
+const clientsEn = [
   "Maskan Arabia",
   "Ministry of Interior",
   "Ministry of Planning",
@@ -9,36 +10,40 @@ const clients = [
   "Dar Al Ibkar Contracting",
   "Al Jazirah Group",
   "Saudi Aramco Partners",
-  "Maskan Arabia",
-  "Ministry of Interior",
-  "Ministry of Planning",
-  "Afak Al Omran",
-  "Abdulrahman Al Rashid",
-  "Dar Al Ibkar Contracting",
+];
+
+const clientsAr = [
+  "مسكن العربية",
+  "وزارة الداخلية",
+  "وزارة التخطيط",
+  "آفاق العمران",
+  "شركة عبدالرحمن الراشد",
+  "دار الإبكار للمقاولات",
+  "مجموعة الجزيرة",
+  "شركاء أرامكو السعودية",
 ];
 
 export default function Clients() {
+  const { t, lang } = useLang();
   const { ref } = useIntersectionObserver();
+  const clients = [...(lang === "ar" ? clientsAr : clientsEn), ...(lang === "ar" ? clientsAr : clientsEn)];
 
   return (
     <section id="clients" className="py-24 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14 reveal" ref={ref}>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 border border-purple-200 text-[#5B3B8A] text-sm font-medium mb-4">
-            Trust & Partnership
+            {t("clients.badge")}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our <span className="gradient-text">Clients</span>
+            <span className="gradient-text">{t("clients.h2a")}</span>
+            {t("clients.h2b") ? ` ${t("clients.h2b")}` : ""}
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            Trusted by leading construction companies, government entities, and developers
-          </p>
+          <p className="text-gray-500 text-lg max-w-xl mx-auto">{t("clients.desc")}</p>
         </div>
       </div>
 
-      {/* Scrolling logos strip */}
       <div className="relative">
-        {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
 

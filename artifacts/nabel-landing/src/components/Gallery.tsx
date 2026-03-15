@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { X, ZoomIn } from "lucide-react";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { useLang } from "../context/LanguageContext";
 
 const images = [
   { src: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", alt: "Glass facade building", span: "col-span-2 row-span-2" },
@@ -13,6 +14,7 @@ const images = [
 ];
 
 export default function Gallery() {
+  const { t } = useLang();
   const { ref } = useIntersectionObserver();
   const [lightbox, setLightbox] = useState<string | null>(null);
 
@@ -21,17 +23,14 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 reveal" ref={ref}>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 border border-purple-200 text-[#5B3B8A] text-sm font-medium mb-4">
-            Visual Portfolio
+            {t("gallery.badge")}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Project <span className="gradient-text">Gallery</span>
+            {t("gallery.h2a")} <span className="gradient-text">{t("gallery.h2b")}</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            A glimpse of our craftsmanship and quality installations
-          </p>
+          <p className="text-gray-500 text-lg max-w-xl mx-auto">{t("gallery.desc")}</p>
         </div>
 
-        {/* Masonry Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
           {images.map((img, i) => (
             <div
@@ -55,7 +54,6 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* Lightbox */}
       {lightbox && (
         <div
           className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
