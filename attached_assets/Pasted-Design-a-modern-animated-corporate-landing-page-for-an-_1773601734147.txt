@@ -1,0 +1,296 @@
+Design a modern animated corporate landing page for an industrial company called "NABEL Industrial Windows Factory".
+
+Project description:
+A professional landing page for NABEL Industrial Windows Factory to showcase the company's services in UPVC windows and doors, glass facades, aluminum systems, cladding, and structural glass. The page should highlight completed projects across multiple cities in Saudi Arabia, build credibility with contractors and real estate developers, and encourage potential clients to contact the company for project inquiries or quotations.
+
+Target audience:
+Construction companies
+Real estate developers
+Government contractors
+Private villa owners
+
+Design style:
+Modern industrial corporate design
+Clean professional layout
+Card-based UI components
+Glass and architecture aesthetics
+Wide spacing and minimal design
+
+Color palette:
+Primary: Deep Purple #5B3B8A
+Secondary: Light Purple #8E6BC4
+Accent: Soft gradient purple
+Background: White and light gray
+
+Typography:
+Professional sans-serif font (Inter or Poppins)
+
+Layout requirements:
+Responsive design
+RTL compatible (Arabic and English friendly)
+Modern spacing and grid layout
+Soft shadows and rounded corners
+Large visual sections
+
+Animations:
+Smooth scroll animations
+Fade-in sections
+Staggered card animations
+Hover lift effects
+Animated number counters
+Parallax hero background
+Logo scrolling animation
+
+Create the following sections:
+
+1. Hero Section
+Full-width hero section with a modern glass building background image.
+
+Include:
+Company logo
+Large headline
+Short description
+Two call-to-action buttons
+
+Headline:
+"Advanced UPVC Windows & Glass Facades Solutions"
+
+Description:
+Providing high-quality windows, doors, and facade systems for residential, commercial, and government projects across Saudi Arabia.
+
+Buttons:
+Primary: View Projects
+Secondary: Contact Us
+
+Hero animation:
+Text fade-up
+Buttons hover glow
+Background parallax effect
+
+
+2. Statistics Section
+Display company achievements.
+
+Layout:
+4 statistic cards in a horizontal grid.
+
+Stats examples:
+50+ Projects Completed
+10+ Contracting Companies
+7+ Cities
+1000+ Installed Windows
+
+Each card includes:
+Icon
+Large animated number
+Short label
+
+Animation:
+Number counter animation
+Staggered card entrance
+Hover lift effect
+
+
+3. Services Section
+Title: Our Services
+
+Display 6 service cards.
+
+Services:
+UPVC Windows
+UPVC Doors
+Glass Facades
+Aluminum Systems
+Cladding
+Structural Glass
+
+Each card contains:
+Icon
+Service title
+Short description
+
+Design:
+Minimal white cards
+Purple accent elements
+
+Interaction:
+Hover lift animation
+Icon animation
+Glow border on hover
+
+
+4. Featured Projects Section
+Title: Our Projects
+
+Display project cards in a responsive grid.
+
+Each card includes:
+Project name
+Contracting company
+Work type
+Location
+Project image placeholder
+
+Example project:
+Yasmin Villas Project – 64 Villas
+Contractor: Maskan Arabia
+Work: UPVC Windows & Doors
+Location: Riyadh
+
+Card interaction:
+Image zoom on hover
+Overlay project info
+
+
+5. Projects by City Section
+Title: Projects Across Saudi Arabia
+
+Show projects distributed across cities.
+
+Cities:
+Riyadh
+Al-Kharj
+Jeddah
+Hail
+Al-Ahsa
+Qassim
+Dammam
+
+Display city cards with:
+City name
+Number of projects
+
+Optional:
+Interactive map
+
+Animation:
+Hover highlight
+City card glow
+
+
+6. Clients Section
+Title: Our Clients
+
+Display a scrolling logo strip.
+
+Example companies:
+Maskan Arabia
+Ministry of Interior
+Ministry of Planning
+Afak Al Omran
+Abdulrahman Al Rashid Company
+Dar Al Ibkar Contracting
+
+Design:
+Minimal gray logos
+White background
+
+Animation:
+Auto horizontal logo scroll
+Logo hover highlight
+
+
+7. Projects Gallery Section
+Title: Project Gallery
+
+Display a masonry grid gallery.
+
+Images:
+Buildings
+Installed windows
+Glass facades
+Construction projects
+
+Interaction:
+Hover zoom
+Click to open lightbox
+
+
+8. Why Choose Us Section
+Title: Why Choose NABEL
+
+Layout:
+Two-column section.
+
+Left:
+Modern construction illustration.
+
+Right:
+Checklist features.
+
+Points:
+High quality materials
+Experienced engineering team
+Government and commercial project experience
+Fast execution
+Reliable after-sales support
+
+Animation:
+Checklist fade-in
+Icon pop animation
+
+
+9. Call To Action Section
+Encourage visitors to contact the company.
+
+Headline:
+Start Your Next Project With Us
+
+Description:
+Get professional solutions for windows, doors, and glass facades.
+
+Buttons:
+Request a Quote
+Contact Us
+
+Design:
+Full-width purple gradient background
+
+Animation:
+Button glow
+Gradient movement
+
+
+10. Contact Section
+Title: Contact Us
+
+Display contact information cards.
+
+Phone:
++966 506393399
+
+Address:
+Riyadh – Al Fahd Industrial Area – Harun Al Rashid Road
+
+Include:
+Phone
+Location
+WhatsApp
+
+Design:
+Minimal cards with purple icons
+
+Animation:
+Icon bounce
+Hover highlight
+
+
+11. Footer
+Include:
+Company logo
+Quick links
+Services links
+Contact info
+Social icons
+
+Style:
+Dark purple footer
+Clean corporate layout
+
+
+Final requirements:
+Responsive design
+Smooth modern animations
+Corporate industrial look
+High credibility visual style
+Suitable for construction and manufacturing companies.
