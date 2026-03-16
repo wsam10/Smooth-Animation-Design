@@ -21,7 +21,9 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 ```text
 artifacts-monorepo/
 ├── artifacts/              # Deployable applications
-│   └── api-server/         # Express API server
+│   ├── api-server/         # Express API server
+│   ├── nabel-landing/      # NABEL Industrial Windows public landing page (React + Vite)
+│   └── office/             # NABEL internal office management system (Next.js 15)
 ├── lib/                    # Shared libraries
 │   ├── api-spec/           # OpenAPI spec + Orval codegen config
 │   ├── api-client-react/   # Generated React Query hooks
@@ -90,6 +92,26 @@ Generated Zod schemas from the OpenAPI spec (e.g. `HealthCheckResponse`). Used b
 ### `lib/api-client-react` (`@workspace/api-client-react`)
 
 Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHealthCheck`, `healthCheck`).
+
+### `artifacts/nabel-landing` (`@workspace/nabel-landing`)
+
+Public marketing landing page for NABEL Industrial Windows Factory. Built with React + Vite + Tailwind. Features scroll-reveal animations, EN/AR language switching (LTR/RTL), parallax hero, lightbox gallery, animated counters, and a seamless infinite clients marquee.
+
+- Served via the `artifacts/nabel-landing: web` workflow
+- Deployed separately to Vercel via `vercel.json` at project root
+- Build: `pnpm --filter @workspace/nabel-landing run build` → `dist/public/`
+
+### `artifacts/office` (`@workspace/office`)
+
+Internal office management system for NABEL. Built with Next.js 15 App Router + TypeScript + Tailwind CSS. Dark/light theme, responsive sidebar layout.
+
+- Pages: Dashboard, Employees, Projects, Tasks, Clients, Reports, Settings, Login
+- Components: `src/components/ui/` (Badge, Button, Card, Input, Avatar, ProgressBar), `src/components/layout/` (Sidebar, Header, DashboardLayout), `src/components/shared/` (PageHeader, StatsCard, EmptyState)
+- Context: `ThemeContext` (dark/light), `AuthContext` (session management)
+- Hooks: `useLocalStorage`, `useDebounce`, `usePagination`
+- Lib: `utils.ts` (cn, formatDate, formatCurrency…), `constants.ts`, `mock-data.ts`
+- Served at port 3000 via the `artifacts/office: Office App` workflow
+- Build: `pnpm --filter @workspace/office run build`
 
 ### `scripts` (`@workspace/scripts`)
 
