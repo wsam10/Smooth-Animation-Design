@@ -1,4 +1,4 @@
-import { ChevronDown, ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Phone, ChevronDown } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 
 export default function Hero() {
@@ -20,7 +20,7 @@ export default function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#5B3B8A]/30 rounded-full blur-3xl animate-float delay-500" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white/5 to-transparent" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 text-center flex flex-col items-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-purple-200 text-sm font-medium mb-8 animate-fade-up">
           <span className="w-2 h-2 rounded-full bg-[#8E6BC4] animate-pulse" />
           {t("hero.badge")}
@@ -57,16 +57,15 @@ export default function Hero() {
           </a>
         </div>
 
-
+        {/* Scroll indicator — centered below buttons */}
+        <a
+          href="#stats"
+          className="mt-14 flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors animate-fade-up delay-600"
+        >
+          <span className="text-xs uppercase tracking-widest">{t("hero.scroll")}</span>
+          <ChevronDown size={20} className="animate-bounce" />
+        </a>
       </div>
-
-      <a
-        href="#stats"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors animate-fade-up delay-600"
-      >
-        <span className="text-xs uppercase tracking-widest">{t("hero.scroll")}</span>
-        <ChevronDown size={20} className="animate-bounce" />
-      </a>
     </section>
   );
 }

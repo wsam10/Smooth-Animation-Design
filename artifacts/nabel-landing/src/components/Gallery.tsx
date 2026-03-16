@@ -4,13 +4,41 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { useLang } from "../context/LanguageContext";
 
 const images = [
-  { src: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", alt: "Glass facade building", span: "col-span-2 row-span-2" },
-  { src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&q=80", alt: "Modern apartment windows", span: "" },
-  { src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80", alt: "Residential project", span: "" },
-  { src: "https://images.unsplash.com/photo-1495576775051-8af0d10f21d9?w=400&q=80", alt: "UPVC windows installation", span: "" },
-  { src: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=80", alt: "Villa windows", span: "" },
-  { src: "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=400&q=80", alt: "Commercial glass facade", span: "" },
-  { src: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=600&q=80", alt: "Modern building exterior", span: "col-span-2" },
+  {
+    src: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80&auto=format&fit=crop",
+    alt: "Glass facade building",
+    span: "col-span-2 row-span-2",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&q=80&auto=format&fit=crop",
+    alt: "Modern villa windows",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80&auto=format&fit=crop",
+    alt: "Residential project",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80&auto=format&fit=crop",
+    alt: "Commercial interior",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=80&auto=format&fit=crop",
+    alt: "Villa exterior",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=400&q=80&auto=format&fit=crop",
+    alt: "Modern office building",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80&auto=format&fit=crop",
+    alt: "Construction facade work",
+    span: "col-span-2",
+  },
 ];
 
 export default function Gallery() {
@@ -35,7 +63,7 @@ export default function Gallery() {
           {images.map((img, i) => (
             <div
               key={i}
-              className={`reveal relative overflow-hidden rounded-2xl cursor-pointer group ${img.span}`}
+              className={`reveal relative overflow-hidden rounded-2xl cursor-pointer group bg-gray-100 ${img.span}`}
               style={{ transitionDelay: `${i * 0.08}s` }}
               onClick={() => setLightbox(img.src)}
             >
@@ -43,6 +71,11 @@ export default function Gallery() {
                 src={img.src}
                 alt={img.alt}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src =
+                    "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format&fit=crop";
+                }}
               />
               <div className="absolute inset-0 bg-[#2D1B55]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">

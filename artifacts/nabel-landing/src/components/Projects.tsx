@@ -3,12 +3,36 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { useLang } from "../context/LanguageContext";
 
 const projectData = [
-  { id: 1, tag: "Residential", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" },
-  { id: 2, tag: "Government",  img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" },
-  { id: 3, tag: "Commercial",  img: "https://images.unsplash.com/photo-1495576775051-8af0d10f21d9?w=600&q=80" },
-  { id: 4, tag: "Residential", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" },
-  { id: 5, tag: "Government",  img: "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=600&q=80" },
-  { id: 6, tag: "Residential", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" },
+  {
+    id: 1,
+    tag: "Residential",
+    img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80&auto=format&fit=crop",
+  },
+  {
+    id: 2,
+    tag: "Government",
+    img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format&fit=crop",
+  },
+  {
+    id: 3,
+    tag: "Commercial",
+    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop",
+  },
+  {
+    id: 4,
+    tag: "Residential",
+    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&auto=format&fit=crop",
+  },
+  {
+    id: 5,
+    tag: "Government",
+    img: "https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=600&q=80&auto=format&fit=crop",
+  },
+  {
+    id: 6,
+    tag: "Residential",
+    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80&auto=format&fit=crop",
+  },
 ];
 
 const tagColors: Record<string, string> = {
@@ -42,11 +66,16 @@ export default function Projects() {
               className="reveal group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 card-hover"
               style={{ transitionDelay: `${i * 0.1}s` }}
             >
-              <div className="relative overflow-hidden h-52">
+              <div className="relative overflow-hidden h-52 bg-gray-100">
                 <img
                   src={p.img}
                   alt={t(`project.${p.id}.name`)}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format&fit=crop";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2D1B55]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className={`absolute top-3 start-3 px-3 py-1 rounded-full text-xs font-semibold border ${tagColors[p.tag]}`}>

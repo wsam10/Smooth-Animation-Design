@@ -8,12 +8,12 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { label: t("nav.home"), href: "#hero" },
+    { label: t("nav.home"),     href: "#hero" },
     { label: t("nav.services"), href: "#services" },
     { label: t("nav.projects"), href: "#projects" },
-    { label: t("nav.gallery"), href: "#gallery" },
-    { label: t("nav.clients"), href: "#clients" },
-    { label: t("nav.contact"), href: "#contact" },
+    { label: t("nav.gallery"),  href: "#gallery" },
+    { label: t("nav.clients"),  href: "#clients" },
+    { label: t("nav.contact"),  href: "#contact" },
   ];
 
   useEffect(() => {
@@ -25,29 +25,25 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md py-3"
-          : "bg-transparent py-5"
+        scrolled ? "bg-white/95 backdrop-blur-md shadow-md py-3" : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#hero" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#5B3B8A] to-[#8E6BC4] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-            <span className="text-white font-bold text-lg">N</span>
-          </div>
-          <div>
-            <div className={`font-bold text-lg leading-tight transition-colors ${scrolled ? "text-[#5B3B8A]" : "text-white"}`}>
-              {t("nav.brand")}
-            </div>
-            <div className={`text-xs leading-tight transition-colors ${scrolled ? "text-gray-500" : "text-purple-200"}`}>
-              {t("nav.brandSub")}
-            </div>
-          </div>
+      {/* Three-column layout: logo | links | actions */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-3 items-center">
+
+        {/* LEFT — Logo */}
+        <a href="#hero" className="flex items-center gap-3 group justify-self-start">
+          <img
+            src="/nabel-logo.png"
+            alt="NABEL"
+            className={`h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
+              scrolled ? "" : "brightness-200"
+            }`}
+          />
         </a>
 
-        {/* Desktop Links — centered */}
-        <div className="hidden md:flex flex-1 items-center justify-center gap-6">
+        {/* CENTER — Nav links */}
+        <div className="hidden md:flex items-center justify-center gap-6">
           {links.map((link) => (
             <a
               key={link.href}
@@ -60,8 +56,10 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8E6BC4] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
+        </div>
 
-          {/* Lang toggle */}
+        {/* RIGHT — Language toggle + CTA */}
+        <div className="hidden md:flex items-center justify-end gap-3">
           <button
             onClick={toggle}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm font-semibold transition-all duration-300 hover:scale-105 ${
@@ -69,12 +67,10 @@ export default function Navbar() {
                 ? "border-[#5B3B8A]/30 text-[#5B3B8A] hover:bg-purple-50"
                 : "border-white/30 text-white hover:bg-white/10"
             }`}
-            title={lang === "en" ? "Switch to Arabic" : "Switch to English"}
           >
             <Globe size={15} />
             <span>{lang === "en" ? "عربي" : "EN"}</span>
           </button>
-
           <a
             href="#contact"
             className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#5B3B8A] to-[#8E6BC4] text-white text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
@@ -84,13 +80,11 @@ export default function Navbar() {
         </div>
 
         {/* Mobile right side */}
-        <div className="md:hidden flex items-center gap-3">
+        <div className="md:hidden flex items-center justify-end gap-3">
           <button
             onClick={toggle}
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition-all ${
-              scrolled
-                ? "border-[#5B3B8A]/30 text-[#5B3B8A]"
-                : "border-white/30 text-white"
+              scrolled ? "border-[#5B3B8A]/30 text-[#5B3B8A]" : "border-white/30 text-white"
             }`}
           >
             <Globe size={13} />

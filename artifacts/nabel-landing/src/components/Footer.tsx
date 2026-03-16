@@ -28,15 +28,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#5B3B8A] to-[#8E6BC4] flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">N</span>
-              </div>
-              <div>
-                <div className="font-bold text-xl text-white">{t("nav.brand")}</div>
-                <div className="text-purple-300 text-xs">{t("footer.brandSub")}</div>
-              </div>
-            </div>
+            <a href="#hero" className="flex items-center mb-6">
+              <img
+                src="/nabel-logo.png"
+                alt="NABEL"
+                className="h-20 w-auto object-contain brightness-200"
+              />
+            </a>
             <p className="text-purple-200 text-sm leading-relaxed mb-6">{t("footer.desc")}</p>
             <div className="flex items-center gap-3">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
