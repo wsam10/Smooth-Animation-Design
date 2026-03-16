@@ -18,12 +18,14 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <nav
+      role="navigation"
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled ? "bg-white/95 backdrop-blur-md shadow-md py-3" : "bg-transparent py-5"
       }`}
@@ -31,10 +33,12 @@ export default function Navbar() {
       {/* Desktop — 3-column grid */}
       <div className="max-w-7xl mx-auto px-6 hidden md:grid grid-cols-3 items-center">
         {/* LEFT — Logo */}
-        <a href="#hero" className="flex items-center justify-self-start">
+        <a href="#hero" aria-label="NABEL – Go to homepage" className="flex items-center justify-self-start">
           <img
             src={lang === "en" ? "/nabel-logo-en.png" : "/nabel-logo.png"}
-            alt="NABEL"
+            alt="NABEL Industrial Windows Factory logo"
+            width="180"
+            height="44"
             className={`h-11 w-auto object-contain transition-all duration-300 hover:scale-105 ${
               scrolled ? "" : "brightness-200"
             }`}
@@ -52,7 +56,7 @@ export default function Navbar() {
               }`}
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8E6BC4] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8E6BC4] transition-all duration-300 group-hover:w-full" aria-hidden="true" />
             </a>
           ))}
         </div>
@@ -61,13 +65,14 @@ export default function Navbar() {
         <div className="flex items-center justify-end gap-3">
           <button
             onClick={toggle}
+            aria-label={lang === "en" ? "Switch to Arabic" : "Switch to English"}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm font-semibold transition-all duration-300 hover:scale-105 ${
               scrolled
                 ? "border-[#5B3B8A]/30 text-[#5B3B8A] hover:bg-purple-50"
                 : "border-white/30 text-white hover:bg-white/10"
             }`}
           >
-            <Globe size={15} />
+            <Globe size={15} aria-hidden="true" />
             <span>{lang === "en" ? "عربي" : "EN"}</span>
           </button>
           <a
@@ -81,49 +86,54 @@ export default function Navbar() {
 
       {/* Mobile — logo one side, lang + hamburger other side */}
       <div className="md:hidden flex items-center justify-between px-5">
-        {/* Logo */}
-        <a href="#hero">
+        <a href="#hero" aria-label="NABEL – Go to homepage">
           <img
             src={lang === "en" ? "/nabel-logo-en.png" : "/nabel-logo.png"}
-            alt="NABEL"
+            alt="NABEL Industrial Windows Factory logo"
+            width="160"
+            height="40"
             className={`h-10 w-auto object-contain transition-all duration-300 ${
               scrolled ? "" : "brightness-200"
             }`}
           />
         </a>
 
-        {/* Right side: lang toggle + hamburger */}
         <div className="flex items-center gap-2">
           <button
             onClick={toggle}
+            aria-label={lang === "en" ? "Switch to Arabic" : "Switch to English"}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all ${
               scrolled
                 ? "border-[#5B3B8A]/30 text-[#5B3B8A]"
                 : "border-white/30 text-white"
             }`}
           >
-            <Globe size={13} />
+            <Globe size={13} aria-hidden="true" />
             {lang === "en" ? "عربي" : "EN"}
           </button>
           <button
             onClick={() => setOpen(!open)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
             className={`p-2 rounded-lg transition-colors ${
               scrolled ? "text-gray-700" : "text-white"
             }`}
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
           </button>
         </div>
       </div>
 
       {/* Mobile dropdown menu */}
       {open && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-xl">
+        <div id="mobile-menu" role="menu" className="md:hidden bg-white border-t border-gray-100 shadow-xl">
           <div className="px-6 py-4 flex flex-col gap-4">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
+                role="menuitem"
                 onClick={() => setOpen(false)}
                 className="text-gray-700 font-medium hover:text-[#5B3B8A] transition-colors py-1"
               >
@@ -132,6 +142,7 @@ export default function Navbar() {
             ))}
             <a
               href="#contact"
+              role="menuitem"
               onClick={() => setOpen(false)}
               className="mt-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#5B3B8A] to-[#8E6BC4] text-white text-center font-semibold"
             >

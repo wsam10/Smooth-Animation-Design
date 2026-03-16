@@ -347,3 +347,34 @@ html {
 .stagger-children > *:nth-child(4) { transition-delay: 0.35s; }
 .stagger-children > *:nth-child(5) { transition-delay: 0.45s; }
 .stagger-children > *:nth-child(6) { transition-delay: 0.55s; }
+
+/* ─── Accessibility: focus-visible ring ─────────────────────────── */
+:focus-visible {
+  outline: 3px solid #8E6BC4;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Performance: respect reduced-motion preference ────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ─── Performance: off-screen sections painted lazily ───────────── */
+section:not(#hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}

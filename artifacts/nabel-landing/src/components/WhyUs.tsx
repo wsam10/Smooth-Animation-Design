@@ -19,7 +19,11 @@ export default function WhyUs() {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80"
-                alt="Construction team"
+                alt="NABEL construction team working on an industrial windows project"
+                width="700"
+                height="480"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-[480px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#5B3B8A]/30 to-transparent" />
