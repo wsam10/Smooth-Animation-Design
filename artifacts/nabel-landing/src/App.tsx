@@ -1,28 +1,39 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { LanguageProvider, useLang } from "./context/LanguageContext";
+
+// Above-fold: eager imports (needed immediately)
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Stats from "./components/Stats";
-import Services from "./components/Services";
-import Projects from "./components/Projects";
-import Cities from "./components/Cities";
-import Clients from "./components/Clients";
-import Gallery from "./components/Gallery";
-import WhyUs from "./components/WhyUs";
-import CTA from "./components/CTA";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+
+// Below-fold: lazy imports — each becomes its own JS chunk
+// The browser only downloads these as the user scrolls down
+const Stats    = lazy(() => import("./components/Stats"));
+const Services = lazy(() => import("./components/Services"));
+const Projects = lazy(() => import("./components/Projects"));
+const Cities   = lazy(() => import("./components/Cities"));
+const Clients  = lazy(() => import("./components/Clients"));
+const Gallery  = lazy(() => import("./components/Gallery"));
+const WhyUs    = lazy(() => import("./components/WhyUs"));
+const CTA      = lazy(() => import("./components/CTA"));
+const Contact  = lazy(() => import("./components/Contact"));
+const Footer   = lazy(() => import("./components/Footer"));
+
+function SectionFallback() {
+  return (
+    <div className="py-24 flex items-center justify-center" aria-hidden="true">
+      <div className="w-8 h-8 rounded-full border-2 border-[#8E6BC4] border-t-transparent animate-spin" />
+    </div>
+  );
+}
 
 function LandingPage() {
   const { lang } = useLang();
 
   useEffect(() => {
-    // Strip stale visible classes so the observer re-evaluates each element
     document
       .querySelectorAll(".reveal.visible, .reveal-left.visible, .reveal-right.visible")
       .forEach((el) => el.classList.remove("visible"));
 
-    // Small delay lets React flush DOM updates for the new language before measuring
     const timer = setTimeout(() => {
       const revealEls = document.querySelectorAll(
         ".reveal, .reveal-left, .reveal-right"
@@ -40,7 +51,6 @@ function LandingPage() {
       );
 
       revealEls.forEach((el) => observer.observe(el));
-
       return () => observer.disconnect();
     }, 50);
 
@@ -51,26 +61,44 @@ function LandingPage() {
     <div className="min-h-screen font-sans">
       <Navbar />
       <Hero />
-      <Stats />
-      <Services />
-      <Projects />
-      <Cities />
-      <Clients />
-      <Gallery />
-      <WhyUs />
-      <CTA />
-      <Contact />
-      <Footer />
+      <Suspense fallback={<SectionFallback />}>
+        <Stats />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <Services />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <Projects />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <Cities />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <Clients />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <Gallery />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <WhyUs />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <CTA />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <Contact />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
 
-function App() {
+export default function App() {
   return (
     <LanguageProvider>
       <LandingPage />
     </LanguageProvider>
   );
 }
-
-export default App;

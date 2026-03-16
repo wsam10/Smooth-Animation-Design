@@ -6,34 +6,38 @@ const projectData = [
   {
     id: 1,
     tag: "Residential",
-    img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6",
   },
   {
     id: 2,
     tag: "Government",
-    img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1486325212027-8081e485255e",
   },
   {
     id: 3,
     tag: "Commercial",
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1497366216548-37526070297c",
   },
   {
     id: 4,
     tag: "Residential",
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
   },
   {
     id: 5,
     tag: "Government",
-    img: "https://images.unsplash.com/photo-1464082354059-27db6ce50048?w=600&q=80&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1464082354059-27db6ce50048",
   },
   {
     id: 6,
     tag: "Residential",
-    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
   },
 ];
+
+function buildSrc(base: string, w: number) {
+  return `${base}?w=${w}&q=75&fm=webp&auto=format&fit=crop`;
+}
 
 const tagColors: Record<string, string> = {
   Residential: "bg-blue-50 text-blue-700 border-blue-200",
@@ -46,13 +50,13 @@ export default function Projects() {
   const { ref } = useIntersectionObserver();
 
   return (
-    <section id="projects" className="py-24 bg-gray-50">
+    <section id="projects" className="py-24 bg-gray-50" aria-labelledby="projects-heading">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 reveal" ref={ref}>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 border border-purple-200 text-[#5B3B8A] text-sm font-medium mb-4">
             {t("projects.badge")}
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 id="projects-heading" className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             <span className="gradient-text">{t("projects.h2a")}</span>
             {t("projects.h2b") ? ` ${t("projects.h2b")}` : ""}
           </h2>
@@ -68,16 +72,21 @@ export default function Projects() {
             >
               <div className="relative overflow-hidden h-52 bg-gray-100">
                 <img
-                  src={p.img}
+                  src={buildSrc(p.img, 600)}
+                  srcSet={`${buildSrc(p.img, 400)} 400w, ${buildSrc(p.img, 600)} 600w, ${buildSrc(p.img, 800)} 800w`}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   alt={t(`project.${p.id}.name`)}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  width="600"
+                  height="208"
                   loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src =
-                      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format&fit=crop";
+                      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=75&fm=webp&auto=format&fit=crop";
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2D1B55]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2D1B55]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
                 <div className={`absolute top-3 start-3 px-3 py-1 rounded-full text-xs font-semibold border ${tagColors[p.tag]}`}>
                   {t(`projects.tag.${p.tag.toLowerCase()}`)}
                 </div>
@@ -89,15 +98,15 @@ export default function Projects() {
                 </h3>
                 <div className="space-y-2 text-sm text-gray-500">
                   <div className="flex items-center gap-2">
-                    <Building size={14} className="text-[#8E6BC4] flex-shrink-0" />
+                    <Building size={14} className="text-[#8E6BC4] flex-shrink-0" aria-hidden="true" />
                     <span>{t(`project.${p.id}.contractor`)}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Wrench size={14} className="text-[#8E6BC4] flex-shrink-0" />
+                    <Wrench size={14} className="text-[#8E6BC4] flex-shrink-0" aria-hidden="true" />
                     <span>{t(`project.${p.id}.work`)}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPin size={14} className="text-[#8E6BC4] flex-shrink-0" />
+                    <MapPin size={14} className="text-[#8E6BC4] flex-shrink-0" aria-hidden="true" />
                     <span>{t(`project.${p.id}.city`)}</span>
                   </div>
                 </div>
@@ -112,7 +121,7 @@ export default function Projects() {
             className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border-2 border-[#5B3B8A] text-[#5B3B8A] font-semibold hover:bg-[#5B3B8A] hover:text-white transition-all duration-300"
           >
             {t("projects.viewAll")}
-            <ChevronRight size={18} />
+            <ChevronRight size={18} aria-hidden="true" />
           </a>
         </div>
       </div>
