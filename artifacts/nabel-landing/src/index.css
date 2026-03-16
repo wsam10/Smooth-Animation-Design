@@ -373,8 +373,3 @@ html {
   }
 }
 
-/* ─── Performance: off-screen sections painted lazily ───────────── */
-section:not(#hero) {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
-}
