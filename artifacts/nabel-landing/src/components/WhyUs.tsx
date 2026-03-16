@@ -7,7 +7,7 @@ export default function WhyUs() {
   const { ref } = useIntersectionObserver();
 
   const reasons = [
-    t("whyus.r1"), t("whyus.r2"), t("whyus.r3"),
+    t("whyus.r1"), t("whyus.r2"),
     t("whyus.r4"), t("whyus.r5"), t("whyus.r6"),
   ];
 
