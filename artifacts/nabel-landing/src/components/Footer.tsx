@@ -2,7 +2,7 @@ import { Phone, MapPin, Mail, Facebook, Twitter, Instagram, Linkedin } from "luc
 import { useLang } from "../context/LanguageContext";
 
 export default function Footer() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   const serviceLinks = [
     t("services.upvcWindows"),
@@ -30,7 +30,7 @@ export default function Footer() {
           <div>
             <a href="#hero" className="flex items-center mb-6">
               <img
-                src="/nabel-logo.png"
+                src={lang === "en" ? "/nabel-logo-en.png" : "/nabel-logo.png"}
                 alt="NABEL"
                 className="h-20 w-auto object-contain brightness-200"
               />

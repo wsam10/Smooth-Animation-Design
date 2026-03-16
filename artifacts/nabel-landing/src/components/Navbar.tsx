@@ -33,7 +33,7 @@ export default function Navbar() {
         {/* LEFT — Logo */}
         <a href="#hero" className="flex items-center justify-self-start">
           <img
-            src="/nabel-logo.png"
+            src={lang === "en" ? "/nabel-logo-en.png" : "/nabel-logo.png"}
             alt="NABEL"
             className={`h-11 w-auto object-contain transition-all duration-300 hover:scale-105 ${
               scrolled ? "" : "brightness-200"
@@ -84,7 +84,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#hero">
           <img
-            src="/nabel-logo.png"
+            src={lang === "en" ? "/nabel-logo-en.png" : "/nabel-logo.png"}
             alt="NABEL"
             className={`h-10 w-auto object-contain transition-all duration-300 ${
               scrolled ? "" : "brightness-200"
