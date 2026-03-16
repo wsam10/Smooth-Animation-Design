@@ -12,7 +12,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 hero-bg"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?w=1920&q=80')`,
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-br from-[#2D1B55]/90 via-[#3D2068]/80 to-[#1a0f35]/90" />
@@ -20,7 +20,7 @@ export default function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#5B3B8A]/30 rounded-full blur-3xl animate-float delay-500" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white/5 to-transparent" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-purple-200 text-sm font-medium mb-8 animate-fade-up">
           <span className="w-2 h-2 rounded-full bg-[#8E6BC4] animate-pulse" />
           {t("hero.badge")}
@@ -57,19 +57,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto animate-fade-up delay-500">
-          {[
-            { num: "50+", label: t("hero.stat.projects") },
-            { num: "10+", label: t("hero.stat.partners") },
-            { num: "7+",  label: t("hero.stat.cities") },
-            { num: "1000+", label: t("hero.stat.windows") },
-          ].map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="text-3xl font-bold text-white">{s.num}</div>
-              <div className="text-purple-300 text-sm mt-1">{s.label}</div>
-            </div>
-          ))}
-        </div>
+
       </div>
 
       <a

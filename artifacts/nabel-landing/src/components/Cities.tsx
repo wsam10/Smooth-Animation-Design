@@ -3,13 +3,13 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { useLang } from "../context/LanguageContext";
 
 const cities = [
-  { nameEn: "Riyadh",  nameAr: "الرياض",  count: 18, emoji: "🏙️" },
-  { nameEn: "Al-Kharj", nameAr: "الخرج",   count: 8,  emoji: "🏘️" },
-  { nameEn: "Jeddah",  nameAr: "جدة",      count: 7,  emoji: "🌊" },
-  { nameEn: "Hail",    nameAr: "حائل",     count: 5,  emoji: "⛰️" },
-  { nameEn: "Al-Ahsa", nameAr: "الأحساء",  count: 4,  emoji: "🌴" },
-  { nameEn: "Qassim",  nameAr: "القصيم",   count: 5,  emoji: "🏜️" },
-  { nameEn: "Dammam",  nameAr: "الدمام",   count: 6,  emoji: "🏗️" },
+  { nameEn: "Riyadh",  nameAr: "الرياض",  count: 18 },
+  { nameEn: "Al-Kharj", nameAr: "الخرج",   count: 8 },
+  { nameEn: "Jeddah",  nameAr: "جدة",      count: 7 },
+  { nameEn: "Hail",    nameAr: "حائل",     count: 5 },
+  { nameEn: "Al-Ahsa", nameAr: "الأحساء",  count: 4 },
+  { nameEn: "Qassim",  nameAr: "القصيم",   count: 5 },
+  { nameEn: "Dammam",  nameAr: "الدمام",   count: 6 },
 ];
 
 export default function Cities() {
@@ -36,7 +36,6 @@ export default function Cities() {
               className="reveal group card-hover glow-border bg-white rounded-2xl p-6 text-center border border-gray-100 shadow-sm cursor-default"
               style={{ transitionDelay: `${i * 0.07}s` }}
             >
-              <div className="text-3xl mb-3">{city.emoji}</div>
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#5B3B8A] to-[#8E6BC4] flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
                 <MapPin size={14} className="text-white" />
               </div>
