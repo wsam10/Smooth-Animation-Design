@@ -24,16 +24,16 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "artifacts/office: Office App"
+args = "NABEL Landing"
 
 [[workflows.workflow]]
-name = "artifacts/office: Office App"
+name = "NABEL Landing"
 author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "PORT=3000 pnpm --filter @workspace/office run dev"
-waitForPort = 3000
+args = "npm run dev"
+waitForPort = 5173
 
 [workflows.workflow.metadata]
 outputType = "webview"
