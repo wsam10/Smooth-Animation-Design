@@ -24,10 +24,6 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.badge": "Premium Industrial Windows & Facades",
-    "hero.h1a": "Advanced UPVC Windows",
-    "hero.h1b": "& Glass Facades",
-    "hero.h1c": "Solutions",
-    "hero.desc": "Providing high-quality windows, doors, and facade systems for residential, commercial, and government projects across Saudi Arabia.",
     "hero.btnProjects": "View Projects",
     "hero.btnContact": "Contact Us",
     "hero.scroll": "Scroll",
@@ -35,6 +31,27 @@ const translations: Record<Lang, Record<string, string>> = {
     "hero.stat.partners": "Partners",
     "hero.stat.cities": "Cities",
     "hero.stat.windows": "Windows",
+
+    // Hero slides
+    "hero.s1.h1a": "Advanced UPVC Windows",
+    "hero.s1.h1b": "& Glass Facades",
+    "hero.s1.h1c": "Solutions",
+    "hero.s1.desc": "Providing high-quality windows, doors, and facade systems for residential, commercial, and government projects across Saudi Arabia.",
+
+    "hero.s2.h1a": "Modern Glass",
+    "hero.s2.h1b": "Curtain Wall",
+    "hero.s2.h1c": "Systems",
+    "hero.s2.desc": "Spectacular glass curtain wall systems for commercial towers and government buildings that define modern Saudi architecture.",
+
+    "hero.s3.h1a": "High-Performance",
+    "hero.s3.h1b": "Aluminum",
+    "hero.s3.h1c": "Framing Systems",
+    "hero.s3.desc": "Engineered aluminum systems for large-scale commercial, industrial, and governmental structures with superior durability and precision.",
+
+    "hero.s4.h1a": "Trusted Across",
+    "hero.s4.h1b": "Saudi Arabia's",
+    "hero.s4.h1c": "Major Projects",
+    "hero.s4.desc": "From Riyadh to Jeddah, Dammam to Hail — delivering excellence in windows and facades across 120+ projects nationwide.",
 
     // Stats
     "stats.badge": "Our Achievements",
@@ -181,10 +198,6 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.badge": "نوافذ وواجهات صناعية متميزة",
-    "hero.h1a": "نوافذ UPVC المتطورة",
-    "hero.h1b": "وواجهات الزجاج",
-    "hero.h1c": "حلول متكاملة",
-    "hero.desc": "نقدم نوافذ وأبواب وأنظمة واجهات عالية الجودة للمشاريع السكنية والتجارية والحكومية في جميع أنحاء المملكة العربية السعودية.",
     "hero.btnProjects": "عرض المشاريع",
     "hero.btnContact": "اتصل بنا",
     "hero.scroll": "انتقل",
@@ -192,6 +205,27 @@ const translations: Record<Lang, Record<string, string>> = {
     "hero.stat.partners": "شريك",
     "hero.stat.cities": "مدن",
     "hero.stat.windows": "نافذة",
+
+    // Hero slides
+    "hero.s1.h1a": "نوافذ UPVC المتطورة",
+    "hero.s1.h1b": "وواجهات الزجاج",
+    "hero.s1.h1c": "حلول متكاملة",
+    "hero.s1.desc": "نقدم نوافذ وأبواب وأنظمة واجهات عالية الجودة للمشاريع السكنية والتجارية والحكومية في جميع أنحاء المملكة العربية السعودية.",
+
+    "hero.s2.h1a": "أنظمة الجدران",
+    "hero.s2.h1b": "الزجاجية الحديثة",
+    "hero.s2.h1c": "للأبراج والمباني",
+    "hero.s2.desc": "أنظمة جدران الستارة الزجاجية المذهلة للأبراج التجارية والمباني الحكومية التي تُشكّل معالم العمارة السعودية الحديثة.",
+
+    "hero.s3.h1a": "أنظمة الألمنيوم",
+    "hero.s3.h1b": "عالية الأداء",
+    "hero.s3.h1c": "للمشاريع الكبرى",
+    "hero.s3.desc": "أنظمة تأطير ألمنيوم مصممة هندسياً للهياكل التجارية والصناعية والحكومية الكبيرة بمتانة ودقة فائقة.",
+
+    "hero.s4.h1a": "موثوق به في",
+    "hero.s4.h1b": "كبرى مشاريع",
+    "hero.s4.h1c": "المملكة العربية السعودية",
+    "hero.s4.desc": "من الرياض إلى جدة، ومن الدمام إلى حائل — نقدم التميز في النوافذ والواجهات عبر أكثر من 120 مشروعاً على المستوى الوطني.",
 
     // Stats
     "stats.badge": "إنجازاتنا",

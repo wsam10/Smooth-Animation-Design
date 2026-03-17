@@ -253,11 +253,17 @@
 
 .opacity-0 { opacity: 0; }
 
-/* Parallax hero */
+/* Hero slide background */
 .hero-bg {
-  background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  will-change: opacity;
+}
+
+/* Hero slider progress bar animation */
+@keyframes slideProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
 }
 
 /* Card hover lift */
